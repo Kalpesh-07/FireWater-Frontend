@@ -1,0 +1,57 @@
+<div class="container" style="margin-top: 70px;">
+  <div class="row">
+     <div class="col-md-12">
+        <div class="jumbotron text-center">
+           <h1 class="display-3">Thank You!</h1>
+           <p class="lead"><strong>Please check your email</strong> for order confirmation.</p>
+           <hr>
+           <p>
+           <p>Order Id : <strong>{{orderId}}</strong></p>
+        </div>
+     </div>
+  </div>
+  <ng-container >
+     <div class="row">
+        <div class="col my-4">
+           <table class="table">
+              <thead class="table-dark">
+                 <tr class="text-center">
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                 </tr>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let p of dummy_products">
+                    <td class="d-flex align-items-center justify-content-around" >
+                       <img [src]="p.image" alt="{{p.image}}" width="90" height="90" class="order-1">
+                    </td>
+                    <td>
+                       <p>{{p.title}}</p>
+                    </td>
+                    <td>
+                       <p>{{p.price | currency:'USD'}}</p>
+                    </td>
+                    <td>
+                       <p>{{ p.quantityOrdered }}</p>
+                    </td>
+                    <td>
+                       <p>{{(p.price * p.quantityOrdered)| currency:'USD'}}</p>
+                    </td>
+                 </tr>
+                 <tr class="border-0">
+                    <td style="border: none;"></td>
+                    <td></td>
+                    <td></td>
+                    <td>TOTAL</td>
+                    <td>{{cartTotal | currency:'USD'}}</td>
+                 </tr>
+              </tbody>
+           </table>
+        </div>
+        <button class="btn btn-primary btn-lg mt-3" routerLink="/">GO TO SHOP</button>
+     </div>
+  </ng-container>
+</div>

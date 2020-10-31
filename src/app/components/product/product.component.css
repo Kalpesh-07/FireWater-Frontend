@@ -1,0 +1,5 @@
+
+.card:hover,
+.card:active{
+    box-shadow: 2px 2px 2px rgb(23, 31, 32);
+}
