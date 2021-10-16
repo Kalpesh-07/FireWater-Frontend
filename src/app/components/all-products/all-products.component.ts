@@ -12,24 +12,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./all-products.component.css']
 })
 export class AllProductsComponent implements OnInit {
-  products : ProductModelServer[] = [];
+  products: ProductModelServer[] = [];
 
   constructor(private productService: ProductService,
-              private cartService : CartService,
-              private router : Router) { }
+    private cartService: CartService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe( (prods : ServerResponse)=>{
+    this.productService.getAllProducts().subscribe((prods: ServerResponse) => {
       this.products = prods.products;
       console.log(this.products);
-      
+
     })
   }
-  AddToProduct(id:number){
+  AddToProduct(id: number) {
     this.cartService.AddProductToCart(id);
   }
-  onSelectProd(id : number){
-    
-    this.router.navigate(['/single-product',`${id}`]);
+  onSelectProd(id: number) {
+
+    this.router.navigate(['/single-product', `${id}`]);
   }
 }
