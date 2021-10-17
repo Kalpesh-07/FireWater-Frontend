@@ -6,18 +6,17 @@ import { AuthsService } from '../service/auths.service';
   providedIn: 'root'
 })
 export class ProfileGuard implements CanActivate {
-  constructor( private authService : AuthsService,
-              private router : Router){}
-                                                                              
+  constructor(private authService: AuthsService,
+    private router: Router) { }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.auth){
+    if (this.authService.auth) {
       return true;
     }
 
-    this.router.navigate(['/signin'],{queryParams: {returnUrl: state.url}}).then();
+    this.router.navigate(['/signin'], { queryParams: { returnUrl: state.url } }).then();
     return false;
   }
-  
 }
